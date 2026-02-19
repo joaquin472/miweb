@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puccetti Ronquillo Asset Management | Strategic Asset Repositioning</title>
+    <meta name="description" content="Operamos en la intersección de la normativa urbanística y los mercados de capitales para estandarizar activos complejos.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-bg-light: #111111;
+            --color-text: #f5f5f5;
+            --color-text-muted: #888888;
+            --color-accent: #c9a962;
+            --color-border: #2a2a2a;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(10,10,10,0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 1px;
+            background: var(--color-text);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(201,169,98,0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--color-accent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        .btn-outline {
+            background: transparent;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--color-accent), transparent);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* Tesis Section */
+        .tesis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .tesis-main {
+            position: sticky;
+            top: 120px;
+        }
+
+        .tesis-term {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .tesis-definition {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .tesis-hhbu {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .sectors-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .sector-item {
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .sector-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .sector-item:hover {
+            border-color: var(--color-accent);
+            transform: translateX(10px);
+        }
+
+        .sector-item h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .sector-item p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Oportunidades Section */
+        .oportunidades {
+            background: var(--color-bg-light);
+            max-width: 100%;
+            padding: 8rem 5%;
+        }
+
+        .oportunidades-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .problema-list {
+            list-style: none;
+            margin: 3rem 0;
+        }
+
+        .problema-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .problema-list li.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .problema-list li::before {
+            content: '—';
+            color: var(--color-accent);
+            font-weight: 300;
+        }
+
+        .resultado-box {
+            margin-top: 3rem;
+            padding: 2rem;
+            border-left: 2px solid var(--color-accent);
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-text-muted);
+        }
+
+        /* Modelo Section */
+        .modelo-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .modelo-visual {
+            position: relative;
+        }
+
+        .disciplinas {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .disciplina {
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .disciplina.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .disciplina:hover {
+            border-color: var(--color-accent);
+            background: rgba(201,169,98,0.05);
+        }
+
+        .disciplina h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .plus {
+            color: var(--color-accent);
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .modelo-content ul {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .modelo-content li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--color-text-muted);
+        }
+
+        .modelo-content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            width: 8px;
+            height: 1px;
+            background: var(--color-accent);
+        }
+
+        .output-box {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--color-bg-light);
+            border: 1px solid var(--color-border);
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .output-box strong {
+            color: var(--color-accent);
+            font-style: normal;
+        }
+
+        /* Ejecución Section */
+        .ejecucion {
+            background: var(--color-bg-light);
+            max-width: 100%;
+            padding: 8rem 5%;
+        }
+
+        .ejecucion-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pasos-timeline {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .paso {
+            position: relative;
+            padding: 2rem 1.5rem;
+            border-top: 2px solid var(--color-border);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .paso.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .paso:hover {
+            border-top-color: var(--color-accent);
+            background: linear-gradient(to bottom, rgba(201,169,98,0.03), transparent);
+        }
+
+        .paso-numero {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .paso h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .paso p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .entregable {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Servicios Section */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .servicio-card {
+            padding: 3rem;
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .servicio-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .servicio-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .servicio-label {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .servicio-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .servicio-card > p {
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .servicio-list {
+            list-style: none;
+        }
+
+        .servicio-list li {
+            padding: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .servicio-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-size: 0.8rem;
+        }
+
+        /* Colaboración Section */
+        .colaboracion {
+            background: var(--color-bg-light);
+            max-width: 100%;
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .colaboracion-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .colaboracion-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--color-text-muted);
+            margin: 3rem 0;
+        }
+
+        .colaboracion-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .colaboracion-quote {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-text);
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Diferencia Section */
+        .diferencia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .diferencia-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 3rem;
+        }
+
+        .features-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .features-list li strong {
+            color: var(--color-accent);
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 500;
+            min-width: 200px;
+        }
+
+        .features-list li span {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .diferencia-quote {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--color-text);
+            padding: 3rem;
+            border: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .diferencia-quote::before {
+            content: '"';
+            font-size: 6rem;
+            color: var(--color-accent);
+            opacity: 0.3;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            font-family: var(--font-serif);
+        }
+
+        /* Contacto Section */
+        .contacto {
+            background: var(--color-bg-light);
+            max-width: 100%;
+            padding: 8rem 5%;
+        }
+
+        .contacto-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contacto-info h2 {
+            margin-bottom: 3rem;
+        }
+
+        .contacto-item {
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .contacto-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contacto-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .contacto-value {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--color-text);
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .contacto-value::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: var(--transition);
+        }
+
+        .contacto-value:hover {
+            color: var(--color-accent);
+        }
+
+        .contacto-value:hover::after {
+            width: 100%;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .linkedin-btn:hover {
+            border-color: var(--color-accent);
+            background: rgba(201,169,98,0.1);
+        }
+
+        .linkedin-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .contacto-form {
+            padding: 3rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--color-accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5%;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .tesis-grid,
+            .modelo-grid,
+            .diferencia-grid,
+            .contacto-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .pasos-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .paso {
+                border-top: none;
+                border-left: 2px solid var(--color-border);
+                padding-left: 2rem;
+            }
+
+            .servicios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tesis-main {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 5rem 5%;
+            }
+
+            .features-list li {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .features-list li strong {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">Puccetti <span>Ronquillo</span></a>
+            <ul class="nav-links">
+                <li><a href="#tesis">Tesis</a></li>
+                <li><a href="#modelo">Modelo</a></li>
+                <li><a href="#ejecucion">Ejecución</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Asset Management</p>
+            <h1>Strategic Asset Repositioning.<br>Mitigación de Riesgo.</h1>
+            <p class="hero-description">Operamos en la intersección de la normativa urbanística y los mercados de capitales para estandarizar activos complejos.</p>
+            <div class="hero-cta">
+                <a href="#tesis" class="btn">Tesis de Inversión</a>
+                <a href="#contacto" class="btn btn-outline">Contactar</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Tesis Section -->
+    <section id="tesis" class="tesis">
+        <div class="section-header">
+            <span class="section-label">Tesis de Inversión</span>
+            <h2>Estrategia</h2>
+        </div>
+        
+        <div class="tesis-grid">
+            <div class="tesis-main">
+                <div class="tesis-term">Strategic Asset Repositioning</div>
+                <div class="tesis-definition">Reposicionamiento estratégico de activos</div>
+                <div class="tesis-hhbu">Highest and Best Use</div>
+            </div>
+            
+            <div class="sectors-grid">
+                <div class="sector-item">
+                    <h3>Residencial</h3>
+                    <p>Multifamily y build-to-rent</p>
+                </div>
+                <div class="sector-item">
+                    <h3>Turístico / Hotelero</h3>
+                    <p>Hoteles y apartamentos turísticos</p>
+                </div>
+                <div class="sector-item">
+                    <h3>Retail</h3>
+                    <p>Activos comerciales estratégicos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oportunidades Section -->
+    <section class="oportunidades">
+        <div class="oportunidades-content">
+            <div class="section-header">
+                <span class="section-label">Oportunidades</span>
+                <h2>Segmentos Complejos</h2>
+                <p class="section-subtitle">Activos con potencial no plenamente reflejado</p>
+            </div>
+            
+            <ul class="problema-list">
+                <li>Entornos normativos dinámicos y procedimientos especializados</li>
+                <li>Desconexión estructural entre capacidad técnica y vehículos de capital</li>
+                <li>Fragmentación entre arquitectura, normativa y mercado de capitales</li>
+            </ul>
+            
+            <div class="resultado-box">
+                Resultado: Activos con potencial de valor que permanecen suboptimizados.
+            </div>
+        </div>
+    </section>
+
+    <!-- Modelo Section -->
+    <section id="modelo" class="modelo">
+        <div class="section-header">
+            <span class="section-label">Nuestro Modelo</span>
+            <h2>Integración Vertical</h2>
+            <p class="section-subtitle">Tres disciplinas, un objetivo</p>
+        </div>
+        
+        <div class="modelo-grid">
+            <div class="modelo-visual">
+                <div class="disciplinas">
+                    <div class="disciplina">
+                        <h4>Arquitectura</h4>
+                    </div>
+                    <div class="plus">+</div>
+                    <div class="disciplina">
+                        <h4>Normativa</h4>
+                    </div>
+                    <div class="plus">+</div>
+                    <div class="disciplina">
+                        <h4>Capital</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modelo-content">
+                <ul>
+                    <li>Análisis riguroso de cada variable del proceso de transformación</li>
+                    <li>Estructuración del Highest and Best Use mediante metodología propietaria</li>
+                    <li>Garantía de absorción institucional del activo reposicionado</li>
+                </ul>
+                
+                <div class="output-box">
+                    <strong>Output:</strong> Productos financieros con colateral inmobiliario de riesgo mitigado.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejecución Section -->
+    <section id="ejecucion" class="ejecucion">
+        <div class="ejecucion-content">
+            <div class="section-header">
+                <span class="section-label">Modelo de Ejecución</span>
+                <h2>De la Viabilidad al Exit</h2>
+                <p class="section-subtitle">Cinco hitos de de-risking</p>
+            </div>
+            
+            <div class="pasos-timeline">
+                <div class="paso">
+                    <span class="paso-numero">01</span>
+                    <h3>Due Diligence Normativa y de Viabilidad</h3>
+                    <p>Auditoría jurídico-urbanística exhaustiva. Identificación y cuantificación de riesgos regulatorios.</p>
+                    <div class="entregable">Informe de viabilidad con análisis de riesgo/retorno</div>
+                </div>
+                
+                <div class="paso">
+                    <span class="paso-numero">02</span>
+                    <h3>Estructuración de Producto y Highest and Best Use</h3>
+                    <p>Definición óptima de uso. Análisis de demanda de mercado y posicionamiento competitivo.</p>
+                    <div class="entregable">Business Plan estructurado con proyecciones financieras</div>
+                </div>
+                
+                <div class="paso">
+                    <span class="paso-numero">03</span>
+                    <h3>Blindaje Administrativo y De-risking Regulatorio</h3>
+                    <p>Gestión integral de licencias. Coordinación directa con administraciones.</p>
+                    <div class="entregable">Licencias obtentivas como hito de valor consolidado</div>
+                </div>
+                
+                <div class="paso">
+                    <span class="paso-numero">04</span>
+                    <h3>Estructuración de Salida y Equity Maximization</h3>
+                    <p>Selección y negociación con operadores institucionales. Optimización del vehículo de inversión.</p>
+                    <div class="entregable">Activo rentabilizado con operador consolidado</div>
+                </div>
+                
+                <div class="paso">
+                    <span class="paso-numero">05</span>
+                    <h3>Monetización y Exit Estratégico</h3>
+                    <p>Preparación del activo para disposición institucional. Marketing dirigido a inversores cualificados.</p>
+                    <div class="entregable">Activos vendidos. Capital recuperado con plusvalía</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="servicios">
+        <div class="section-header">
+            <span class="section-label">Servicios</span>
+            <h2>Modelos de Colaboración</h2>
+            <p class="section-subtitle">Dos aproximaciones, un objetivo: maximizar el equity</p>
+        </div>
+        
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <div class="servicio-label">Transformación Integral</div>
+                <h3>Reposicionamiento estratégico de activos bajo mandato exclusivo</h3>
+                <p>Asumimos la gestión integral del activo desde la viabilidad hasta el exit. Para propietarios e inversores institucionales que demandan un único responsable con alineación de intereses.</p>
+                <ul class="servicio-list">
+                    <li>Mandato exclusivo con compromiso de recursos dedicados</li>
+                    <li>Fee de éxito vinculado a la monetización del activo</li>
+                    <li>Reporting trimestral de Asset Management</li>
+                    <li>Control integral de todas las variables del proceso</li>
+                </ul>
+            </div>
+            
+            <div class="servicio-card">
+                <div class="servicio-label">Advisory y Underwriting</div>
+                <h3>Due Diligence y estructuración de inversión</h3>
+                <p>Para Family Offices y fondos que evalúan oportunidades de Value-Add. Auditamos el activo, cuantificamos el riesgo normativo y estructuramos la ruta óptima de valorización.</p>
+                <ul class="servicio-list">
+                    <li>Informes de viabilidad normativa y económica</li>
+                    <li>Análisis de escenarios: best case, base case, downside</li>
+                    <li>Recomendación de estructura de entrada y salida</li>
+                    <li>Dictamen técnico para comités de inversión</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colaboración Section -->
+    <section class="colaboracion">
+        <div class="colaboracion-content">
+            <div class="section-header">
+                <span class="section-label">Marco de Colaboración</span>
+                <h2>Relaciones Selectivas</h2>
+                <p class="section-subtitle">Alineación natural</p>
+            </div>
+            
+            <div class="colaboracion-text">
+                <p>La profundidad de nuestra intervención técnica y el despliegue de recursos propios definen un marco de trabajo basado en la selectividad. No gestionamos inmediateces; lideramos procesos de transformación vertical que requieren dedicación exclusiva.</p>
+                <p>Cuando asumimos un activo, asignamos nuestro tiempo, nuestra reputación y nuestros recursos. Nuestro enfoque se centra en la ejecución rigurosa, no en la diversificación operativa.</p>
+            </div>
+            
+            <div class="colaboracion-quote">
+                La calidad de nuestras relaciones determina la calidad de nuestros resultados.
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferencia Section -->
+    <section class="diferencia">
+        <div class="section-header">
+            <span class="section-label">Nuestra Entrega</span>
+            <h2>Productos Financieros con Colateral Inmobiliario de Riesgo Mitigado</h2>
+        </div>
+        
+        <div class="diferencia-grid">
+            <div class="diferencia-content">
+                <p>La diferencia es operativa y conceptual. Mientras la mayoría de operadores inmobiliarios se centran en metros cuadrados y acabados, en Puccetti Ronquillo estructuramos yield, IRR, equity multiple y risk-adjusted returns.</p>
+                
+                <ul class="features-list">
+                    <li>
+                        <strong>Procesos estandarizados</strong>
+                        <span>Resultados predecibles. Cada activo se configura como un caso de inversión con entrada, desarrollo y salida definidos.</span>
+                    </li>
+                    <li>
+                        <strong>Tecnología aplicada</strong>
+                        <span>Seguimiento de proyectos y reporting a inversores en tiempo real. Transparencia operativa total.</span>
+                    </li>
+                    <li>
+                        <strong>Métricas institucionales</strong>
+                        <span>Yield, IRR, Equity Multiple, Risk-adjusted returns. Comunicación en el lenguaje de los inversores institucionales.</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="diferencia-quote">
+                Compartimos con nuestros clientes el mismo horizonte: rentabilidad, certidumbre y ejecución.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contacto">
+        <div class="contacto-content">
+            <div class="contacto-info">
+                <span class="section-label">Contacto</span>
+                <h2>Iniciar una Conversación</h2>
+                
+                <div class="contacto-item">
+                    <span class="contacto-label">Teléfono</span>
+                    <a href="tel:+34663203229" class="contacto-value">+34 663 203 229</a>
+                </div>
+                
+                <div class="contacto-item">
+                    <span class="contacto-label">Email</span>
+                    <a href="mailto:info@puccettironquillo.com" class="contacto-value">info@puccettironquillo.com</a>
+                </div>
+                
+                <div class="contacto-item">
+                    <span class="contacto-label">Ubicación</span>
+                    <span class="contacto-value">Sevilla, España</span>
+                </div>
+                
+                <a href="https://linkedin.com/company/puccetti-ronquillo" target="_blank" class="linkedin-btn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+            
+            <div class="contacto-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Puccetti <span style="color: var(--color-accent);">Ronquillo</span></div>
+            <p class="footer-copy">© 2026 Puccetti Ronquillo Asset Management. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.section-header, .sector-item, .problema-list li, .disciplina, .paso, .servicio-card, .contacto-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por su mensaje. Nos pondremos en contacto a la mayor brevedad.');
+            this.reset();
+        });
+
+        // Stagger animation for lists
+        const style = document.createElement('style');
+        style.textContent = `
+            .problema-list li:nth-child(1) { transition-delay: 0.1s; }
+            .problema-list li:nth-child(2) { transition-delay: 0.2s; }
+            .problema-list li:nth-child(3) { transition-delay: 0.3s; }
+            .paso:nth-child(1) { transition-delay: 0.1s; }
+            .paso:nth-child(2) { transition-delay: 0.2s; }
+            .paso:nth-child(3) { transition-delay: 0.3s; }
+            .paso:nth-child(4) { transition-delay: 0.4s; }
+            .paso:nth-child(5) { transition-delay: 0.5s; }
+            .sector-item:nth-child(1) { transition-delay: 0.1s; }
+            .sector-item:nth-child(2) { transition-delay: 0.2s; }
+            .sector-item:nth-child(3) { transition-delay: 0.3s; }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+</html>
