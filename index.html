@@ -1016,6 +1016,127 @@
                 min-width: auto;
             }
         }
+
+        /* Mercados Section */
+        .mercados {
+            max-width: 100%;
+            padding: 8rem 5%;
+            background: var(--color-bg);
+        }
+
+        .mercados-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .mercados-intro {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+        }
+
+        .mercados-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .mercado-card {
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mercado-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 0;
+            background: var(--color-accent);
+            transition: var(--transition);
+        }
+
+        .mercado-card:hover::before {
+            height: 100%;
+        }
+
+        .mercado-card:hover {
+            border-color: var(--color-accent);
+            background: rgba(201,169,98,0.03);
+        }
+
+        .mercado-card.featured {
+            border-color: var(--color-accent);
+            background: rgba(201,169,98,0.05);
+        }
+
+        .mercado-card.featured::before {
+            height: 100%;
+        }
+
+        .mercado-name {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .mercado-card.featured .mercado-name {
+            color: var(--color-accent);
+        }
+
+        .mercado-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            padding: 2px 8px;
+            margin-bottom: 1rem;
+        }
+
+        .mercado-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .mercado-tipos {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .mercado-tipo {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            background: rgba(201,169,98,0.08);
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 1024px) {
+            .mercados-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mercados-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1250,6 +1371,125 @@
         </div>
     </section>
 
+
+    <!-- Mercados Section -->
+    <section class="mercados">
+        <div class="mercados-content">
+            <div class="section-header">
+                <span class="section-label">Mercados</span>
+                <h2>Presencia Nacional con Especialización en Mercados Clave</h2>
+                <p class="section-subtitle">Donde la complejidad normativa y el potencial de valor coinciden</p>
+            </div>
+
+            <p class="mercados-intro">Operamos en mercados donde la combinación de activos infravalorados, entornos normativos específicos y demanda institucional genera las condiciones óptimas para nuestra metodología de reposicionamiento.</p>
+
+            <div class="mercados-grid">
+
+                <div class="mercado-card featured">
+                    <div class="mercado-tag">Mercado Principal</div>
+                    <div class="mercado-name">Sevilla</div>
+                    <p class="mercado-desc">Sede de operaciones y mercado de mayor profundidad para PRAM. Elevada concentración de activos turísticos e históricos con potencial de reconversión hotelera en el centro histórico.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Hotel Boutique</span>
+                        <span class="mercado-tipo">Residencial</span>
+                        <span class="mercado-tipo">Retail</span>
+                        <span class="mercado-tipo">Patrimonio Histórico</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card featured">
+                    <div class="mercado-tag">Mercado Principal</div>
+                    <div class="mercado-name">Costa del Sol</div>
+                    <p class="mercado-desc">Marbella, Estepona, Málaga y corredor occidental. Mercado de referencia para inversión hotelera y turística de lujo con demanda internacional sostenida y yields competitivos.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Hotel & Resort</span>
+                        <span class="mercado-tipo">Apartamento Turístico</span>
+                        <span class="mercado-tipo">Lujo</span>
+                        <span class="mercado-tipo">Branded Residences</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card">
+                    <div class="mercado-tag">Mercado Activo</div>
+                    <div class="mercado-name">Madrid</div>
+                    <p class="mercado-desc">Capital de referencia para inversores institucionales y family offices. Operaciones de value-add en activos terciarios y residencial multifamily en distritos con alta liquidez.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Multifamily</span>
+                        <span class="mercado-tipo">Oficinas Value-Add</span>
+                        <span class="mercado-tipo">Retail Prime</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card">
+                    <div class="mercado-tag">Mercado Activo</div>
+                    <div class="mercado-name">Barcelona</div>
+                    <p class="mercado-desc">Entorno normativo complejo con oportunidades de reposicionamiento significativas. Especialización en activos turísticos y residenciales con restricciones de licencia que generan barreras de entrada favorables.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Hotel</span>
+                        <span class="mercado-tipo">Residencial</span>
+                        <span class="mercado-tipo">Activos Complejos</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card">
+                    <div class="mercado-tag">Mercado Activo</div>
+                    <div class="mercado-name">Valencia</div>
+                    <p class="mercado-desc">Mercado en expansión con creciente interés institucional. Oportunidades en reconversión hotelera y residencial en el entorno del centro histórico y zona costera.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Hotelero</span>
+                        <span class="mercado-tipo">Residencial</span>
+                        <span class="mercado-tipo">Turístico</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card">
+                    <div class="mercado-tag">Mercado Activo</div>
+                    <div class="mercado-name">Cádiz</div>
+                    <p class="mercado-desc">Activos históricos con alta singularidad y potencial de conversión a uso hotelero boutique. Mercado con escasa competencia institucional y yields atractivos para el segmento mid-ticket.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Hotel Boutique</span>
+                        <span class="mercado-tipo">Patrimonio</span>
+                        <span class="mercado-tipo">Turístico</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card">
+                    <div class="mercado-tag">Mercado Activo</div>
+                    <div class="mercado-name">Jerez de la Frontera</div>
+                    <p class="mercado-desc">Mercado infrapenetrado con activos singulares vinculados al patrimonio vitivinícola. Alto potencial de reposicionamiento en turismo experiencial y hotelería de autor.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Turismo Experiencial</span>
+                        <span class="mercado-tipo">Hotel Boutique</span>
+                        <span class="mercado-tipo">Patrimonio</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card">
+                    <div class="mercado-tag">Mercado Activo</div>
+                    <div class="mercado-name">Córdoba</div>
+                    <p class="mercado-desc">Centro histórico Patrimonio de la Humanidad con demanda turística creciente. Activos residenciales e históricos con potencial de conversión a establecimientos hoteleros de alto valor.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Patrimonio UNESCO</span>
+                        <span class="mercado-tipo">Hotel Boutique</span>
+                        <span class="mercado-tipo">Turístico</span>
+                    </div>
+                </div>
+
+                <div class="mercado-card">
+                    <div class="mercado-tag">Mercado Activo</div>
+                    <div class="mercado-name">Santander</div>
+                    <p class="mercado-desc">Mercado costero con activos hoteleros y residenciales en proceso de renovación. Demanda turística estacional con interés creciente de capital institucional en el segmento vacacional.</p>
+                    <div class="mercado-tipos">
+                        <span class="mercado-tipo">Hotelero</span>
+                        <span class="mercado-tipo">Vacacional</span>
+                        <span class="mercado-tipo">Residencial</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Diferencia Section -->
     <section class="diferencia">
         <div class="section-header">
@@ -1314,7 +1554,7 @@
             </div>
             
             <div class="contacto-form">
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/mojgbqnr" method="POST">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" required>
@@ -1420,9 +1660,7 @@
         });
 
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Gracias por su mensaje. Nos pondremos en contacto a la mayor brevedad.');
-            this.reset();
+            // Formspree handles submission — no preventDefault
         });
 
         const style = document.createElement('style');
