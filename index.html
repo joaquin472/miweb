@@ -2591,4 +2591,93 @@
             .paso:nth-child(3) { transition-delay: 0.3s; }
             .paso:nth-child(4) { transition-delay: 0.4s; }
             .paso:nth-child(5) { transition-delay: 0.5s; }
-            .sector-item:
+            .sector-item:nth-child(1) { transition-delay: 0.1s; }
+            .sector-item:nth-child(2) { transition-delay: 0.2s; }
+            .sector-item:nth-child(3) { transition-delay: 0.3s; }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <script>
+        // ── NDA Modal ──────────────────────────────────────────────────────
+        var currentLang = 'es';
+
+        function openNDA(assetName) {
+            document.getElementById('ndaAssetName').textContent = assetName;
+            document.getElementById('ndaActivoField').value = assetName;
+            document.getElementById('ndaTimestamp').value = new Date().toISOString();
+            document.getElementById('ndaOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNDA() {
+            document.getElementById('ndaOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function switchLang(lang) {
+            currentLang = lang;
+            document.getElementById('ndaLangField').value = lang.toUpperCase();
+            document.querySelectorAll('.nda-lang-tab').forEach(function(t) {
+                t.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            document.getElementById('ndaTextEs').classList.toggle('active', lang === 'es');
+            document.getElementById('ndaTextEn').classList.toggle('active', lang === 'en');
+            var isEN = lang === 'en';
+            document.getElementById('lbl_nombre').textContent    = isEN ? 'Full name *'           : 'Nombre completo *';
+            document.getElementById('lbl_empresa').textContent   = isEN ? 'Company / Entity'       : 'Empresa / Razón Social';
+            document.getElementById('lbl_email').textContent     = isEN ? 'Email *'                : 'Email *';
+            document.getElementById('lbl_telefono').textContent  = isEN ? 'Phone'                  : 'Teléfono';
+            document.getElementById('lbl_dni').textContent       = isEN ? 'ID / CIF / Passport *'  : 'DNI / CIF / Passport *';
+            document.getElementById('lbl_pais').textContent      = isEN ? 'Country of residence *' : 'País de residencia *';
+            document.getElementById('lbl_domicilio').textContent = isEN ? 'Full address *'          : 'Domicilio *';
+            document.getElementById('lbl_check').innerHTML = isEN
+                ? 'I have read and fully accept the <strong>Non-Disclosure Agreement</strong> of Puccetti Ronquillo Asset Management. I understand that this electronic acceptance has full legal validity as a digital signature under applicable law.'
+                : 'He leído y acepto en su totalidad el <strong>Acuerdo de Confidencialidad</strong> de Puccetti Ronquillo Asset Management. Entiendo que esta aceptación electrónica tiene plena validez legal como firma digital conforme a la normativa vigente.';
+            document.getElementById('ndaScrollNotice').textContent = isEN
+                ? '↑ Please scroll through the agreement and read it in full before signing.'
+                : '↑ Por favor, desplace el texto para leer el acuerdo completo antes de firmar.';
+            document.getElementById('ndaSubmitBtn').textContent = isEN
+                ? 'Sign NDA & Request Dossier'
+                : 'Firmar NDA y Solicitar Dossier';
+            document.getElementById('successTitle').textContent = isEN
+                ? 'NDA signed successfully'
+                : 'NDA firmado correctamente';
+            document.getElementById('successMsg').textContent = isEN
+                ? 'We have registered your signature and notified the Puccetti Ronquillo team. We will contact you within 24–48 hours to provide the full asset dossier.'
+                : 'Hemos registrado su firma y notificado al equipo de Puccetti Ronquillo. Nos pondremos en contacto en las próximas 24–48 horas para facilitar el dossier completo del activo.';
+        }
+
+        document.getElementById('ndaOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeNDA();
+        });
+
+        document.getElementById('ndaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('ndaSubmitBtn');
+            btn.disabled = true;
+            btn.textContent = currentLang === 'en' ? 'Sending...' : 'Enviando...';
+            var formData = new FormData(this);
+            fetch('https://formspree.io/f/mojgbqnr', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(function(r) {
+                if (r.ok) {
+                    document.getElementById('ndaFormWrapper').style.display = 'none';
+                    document.getElementById('ndaSuccess').style.display = 'block';
+                } else {
+                    btn.disabled = false;
+                    btn.textContent = currentLang === 'en' ? 'Sign NDA & Request Dossier' : 'Firmar NDA y Solicitar Dossier';
+                    alert(currentLang === 'en' ? 'Error. Please try again.' : 'Error al enviar. Intente de nuevo.');
+                }
+            }).catch(function() {
+                btn.disabled = false;
+                alert(currentLang === 'en' ? 'Connection error. Please try again.' : 'Error de conexión. Intente de nuevo.');
+            });
+        });
+    </script>
+
+</body>
+</html>
