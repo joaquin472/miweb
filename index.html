@@ -1369,6 +1369,345 @@
             }
         }
 
+
+        /* ── ACTIVOS SECTION ─────────────────────────────── */
+        .activos {
+            max-width: 100%;
+            padding: 8rem 5%;
+            background: var(--color-bg);
+        }
+        .activos-content { max-width: 1400px; margin: 0 auto; }
+
+        .activos-intro {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            max-width: 680px;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+        }
+
+        /* Asset card */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .asset-card {
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+        .asset-card:hover { border-color: var(--color-accent); }
+
+        .asset-badge-row {
+            display: flex;
+            gap: .5rem;
+            padding: 1.2rem 1.5rem .8rem;
+            flex-wrap: wrap;
+        }
+        .asset-badge {
+            font-size: .65rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+        }
+        .asset-badge.grey {
+            border-color: var(--color-border);
+            color: var(--color-text-muted);
+        }
+
+        .asset-header { padding: 0 1.5rem 1.2rem; }
+        .asset-type {
+            font-size: .72rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: .4rem;
+        }
+        .asset-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: .3rem;
+            line-height: 1.2;
+        }
+        .asset-location {
+            font-size: .82rem;
+            color: var(--color-text-muted);
+        }
+        .asset-location span { color: var(--color-accent); }
+
+        .asset-divider {
+            height: 1px;
+            background: var(--color-border);
+            margin: 0 1.5rem;
+        }
+
+        .asset-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            padding: 1rem 1.5rem;
+        }
+        .spec-item { padding: .6rem 0; border-bottom: 1px solid var(--color-border); }
+        .spec-item:nth-last-child(-n+2) { border-bottom: none; }
+        .spec-label {
+            font-size: .65rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: .2rem;
+        }
+        .spec-value {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--color-text);
+        }
+
+        .asset-thesis {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--color-border);
+            font-size: .85rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+        .asset-thesis strong { color: var(--color-accent); font-weight: 400; }
+
+        .asset-cta {
+            padding: 1.2rem 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+        .asset-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: .85rem;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-size: .75rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: transparent;
+            font-family: var(--font-sans);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .asset-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        /* ── NDA MODAL ───────────────────────────────────── */
+        .nda-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.92);
+            z-index: 9999;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+        }
+        .nda-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+        .nda-modal {
+            background: var(--color-bg-light);
+            border: 1px solid var(--color-border);
+            max-width: 760px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .nda-modal-header {
+            padding: 2rem 2.5rem 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .nda-modal-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--color-text);
+        }
+        .nda-modal-sub {
+            font-size: .8rem;
+            color: var(--color-text-muted);
+            margin-top: .3rem;
+        }
+        .nda-close {
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            font-size: 1.4rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .nda-close:hover { color: var(--color-text); }
+
+        /* Lang tabs */
+        .nda-lang-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .nda-lang-tab {
+            padding: .8rem 2rem;
+            font-size: .75rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--color-text-muted);
+            font-family: var(--font-sans);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: var(--transition);
+        }
+        .nda-lang-tab.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+        }
+
+        /* NDA text box */
+        .nda-text-box {
+            margin: 0 2.5rem;
+            border: 1px solid var(--color-border);
+            height: 220px;
+            overflow-y: auto;
+            padding: 1.2rem 1.5rem;
+            font-size: .78rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            display: none;
+        }
+        .nda-text-box.active { display: block; }
+        .nda-text-box h4 {
+            font-family: var(--font-serif);
+            font-size: .9rem;
+            color: var(--color-text);
+            margin: 1rem 0 .4rem;
+        }
+        .nda-text-box h4:first-child { margin-top: 0; }
+        .nda-text-box p { margin-bottom: .6rem; }
+        .nda-text-box ul { padding-left: 1.2rem; margin-bottom: .6rem; }
+        .nda-text-box ul li { margin-bottom: .3rem; }
+
+        /* Form */
+        .nda-form { padding: 1.5rem 2.5rem 2rem; }
+        .nda-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .nda-field label {
+            display: block;
+            font-size: .68rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: .5rem;
+        }
+        .nda-field input, .nda-field select {
+            width: 100%;
+            padding: .7rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            font-size: .9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        .nda-field input:focus, .nda-field select:focus {
+            border-bottom-color: var(--color-accent);
+        }
+        .nda-field select option { background: #111; }
+        .nda-field.full { grid-column: 1 / -1; }
+
+        .nda-scroll-notice {
+            font-size: .72rem;
+            color: var(--color-text-muted);
+            margin: 0 2.5rem .8rem;
+            font-style: italic;
+        }
+
+        .nda-accept-row {
+            display: flex;
+            align-items: flex-start;
+            gap: .8rem;
+            margin-bottom: 1.2rem;
+        }
+        .nda-accept-row input[type="checkbox"] {
+            margin-top: 2px;
+            accent-color: var(--color-accent);
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+        .nda-accept-row label {
+            font-size: .8rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+        .nda-accept-row label strong { color: var(--color-text); }
+
+        .nda-submit {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-family: var(--font-sans);
+            font-size: .78rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .nda-submit:hover {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+        .nda-submit:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+        }
+
+        .nda-success {
+            display: none;
+            padding: 2rem 2.5rem;
+            text-align: center;
+        }
+        .nda-success-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .nda-success h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: .8rem;
+        }
+        .nda-success p { color: var(--color-text-muted); font-size: .9rem; line-height: 1.7; }
+
+        @media (max-width: 768px) {
+            .nda-form-grid { grid-template-columns: 1fr; }
+            .nda-modal-header, .nda-form, .nda-text-box,
+            .nda-scroll-notice { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .nda-text-box { margin-left: 1.5rem; margin-right: 1.5rem; }
+            .nda-scroll-notice { margin-left: 1.5rem; margin-right: 1.5rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -1383,8 +1722,10 @@
                 <li><a href="#modelo">Modelo</a></li>
                 <li><a href="#ejecucion">Ejecución</a></li>
                 <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#activos">Activos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <a href="/index_en.html" style="color:var(--color-text-muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;margin-right:1rem;">EN</a>
             <div class="mobile-menu">
                 <span></span>
                 <span></span>
@@ -1861,6 +2202,244 @@
             </div>
         </div>
     </section>
+
+
+    <!-- ══ ACTIVOS SECTION ══════════════════════════════════════════════ -->
+    <section class="activos" id="activos">
+        <div class="activos-content">
+            <div class="section-header">
+                <span class="section-label">Oportunidades de Inversión</span>
+                <h2>Activos Disponibles</h2>
+                <p class="section-subtitle">Operaciones seleccionadas bajo mandato exclusivo</p>
+            </div>
+
+            <p class="activos-intro">
+                Los activos publicados se presentan en perfil ciego. La ubicación exacta, precio de compra,
+                documentación técnica y análisis financiero completo se facilitan exclusivamente a inversores
+                cualificados previa firma del Acuerdo de Confidencialidad (NDA).
+            </p>
+
+            <div class="asset-grid">
+
+                <!-- ── CAMPEZO 13 ── -->
+                <div class="asset-card">
+                    <div class="asset-badge-row">
+                        <span class="asset-badge">Disponible</span>
+                        <span class="asset-badge grey">Perfil Ciego</span>
+                        <span class="asset-badge grey">Madrid</span>
+                    </div>
+                    <div class="asset-header">
+                        <div class="asset-type">Terciario-Industrial · Reconversión Hotelera</div>
+                        <div class="asset-title">Edificio en Polígono Empresarial</div>
+                        <div class="asset-location">Distrito Este · <span>Madrid</span></div>
+                    </div>
+                    <div class="asset-divider"></div>
+                    <div class="asset-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Superficie construida</div>
+                            <div class="spec-value">4.695 m²c</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Base hotelera</div>
+                            <div class="spec-value">≈ 4.000 m²</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Habitaciones estimadas</div>
+                            <div class="spec-value">88 – 105 hab.</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Ticket</div>
+                            <div class="spec-value">Mid-ticket</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Categoría objetivo</div>
+                            <div class="spec-value">Hotel 3★ / 4★</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Estrategia</div>
+                            <div class="spec-value">Cambio de uso</div>
+                        </div>
+                    </div>
+                    <div class="asset-thesis">
+                        <strong>Tesis:</strong> Arbitraje de uso — adquisición a precio de activo industrial
+                        y revalorización por transformación a producto hotelero en polígono con
+                        precedente de cambio de uso consolidado. Único uso alternativo admitido
+                        por el planeamiento vigente.
+                    </div>
+                    <div class="asset-cta">
+                        <button class="asset-btn" onclick="openNDA('Edificio Polígono Empresarial · Distrito Este, Madrid')">
+                            Solicitar Acceso — Firmar NDA
+                        </button>
+                    </div>
+                </div>
+
+            </div><!-- /asset-grid -->
+        </div>
+    </section>
+
+    <!-- ══ NDA MODAL ════════════════════════════════════════════════════ -->
+    <div class="nda-overlay" id="ndaOverlay">
+        <div class="nda-modal" id="ndaModal">
+
+            <div class="nda-modal-header">
+                <div>
+                    <div class="nda-modal-title">Acuerdo de Confidencialidad · NDA</div>
+                    <div class="nda-modal-sub" id="ndaAssetName">Acceso a dossier de activo</div>
+                </div>
+                <button class="nda-close" onclick="closeNDA()">✕</button>
+            </div>
+
+            <!-- Lang tabs -->
+            <div class="nda-lang-tabs">
+                <button class="nda-lang-tab active" onclick="switchLang('es')">Español</button>
+                <button class="nda-lang-tab" onclick="switchLang('en')">English</button>
+            </div>
+
+            <!-- NDA TEXT ES -->
+            <div class="nda-text-box active" id="ndaTextEs">
+                <h4>ACUERDO DE CONFIDENCIALIDAD — Non-Disclosure Agreement (NDA)</h4>
+                <p>En Sevilla, en la fecha de firma electrónica registrada.</p>
+                <p><strong>De una parte,</strong> D. Joaquín Puccetti, en nombre y representación de <strong>PUCCETTI RONQUILLO S.L.</strong>, domiciliada en Mairena del Aljarafe, Sevilla (en adelante, <strong>"PR"</strong>).</p>
+                <p><strong>De otra parte,</strong> el firmante identificado en el formulario adjunto (en adelante, <strong>"La Contraparte"</strong>).</p>
+                <h4>I. OBJETO</h4>
+                <p>Las Partes están explorando la posible adquisición, transmisión o estructuración de uno o varios activos inmobiliarios. En el marco de dicha exploración, PR podrá facilitar información confidencial al firmante.</p>
+                <h4>II. INFORMACIÓN CONFIDENCIAL</h4>
+                <p>Se considera Información Confidencial toda información, datos, análisis, valoraciones, estrategias, proyecciones financieras, datos catastrales y registrales, estructuras de inversión y documentos relacionados con el activo o activos objeto de la Operación.</p>
+                <h4>III. OBLIGACIONES</h4>
+                <ul>
+                    <li>Mantener la Información Confidencial en estricto secreto.</li>
+                    <li>No divulgarla a terceros sin consentimiento previo y escrito de PR.</li>
+                    <li>Utilizarla exclusivamente para evaluar la Operación.</li>
+                    <li>Adoptar las medidas de seguridad necesarias para su protección.</li>
+                    <li>Limitar el acceso a empleados o asesores que la necesiten estrictamente.</li>
+                </ul>
+                <h4>IV. EXCLUSIONES</h4>
+                <p>No tendrá carácter confidencial la información que sea de dominio público, fuera ya conocida por la Contraparte, o deba divulgarse por imperativo legal.</p>
+                <h4>V. VIGENCIA</h4>
+                <p>El presente Acuerdo tendrá una duración de dos (2) años desde la fecha de aceptación electrónica. Las obligaciones de confidencialidad subsistirán durante toda la vigencia.</p>
+                <h4>VI. NO OBLIGACIÓN DE CONTRATAR</h4>
+                <p>La firma de este Acuerdo no obliga a ninguna de las Partes a contratar ni negociar en relación con la Operación.</p>
+                <h4>VII. LEY APLICABLE</h4>
+                <p>El presente Acuerdo se rige por la legislación española, en particular la Ley 1/2019 de Secretos Empresariales. Las Partes se someten a la jurisdicción de los Juzgados y Tribunales de Sevilla.</p>
+                <h4>VIII. FIRMA ELECTRÓNICA</h4>
+                <p>La aceptación mediante el formulario adjunto, con registro de datos identificativos, dirección IP, fecha y hora, constituye firma electrónica con plena validez legal conforme a la Ley 59/2003 de Firma Electrónica y el Reglamento (UE) 910/2014 (eIDAS).</p>
+            </div>
+
+            <!-- NDA TEXT EN -->
+            <div class="nda-text-box" id="ndaTextEn">
+                <h4>NON-DISCLOSURE AGREEMENT (NDA) — Acuerdo de Confidencialidad</h4>
+                <p>In Seville, on the date of the registered electronic acceptance.</p>
+                <p><strong>On one part,</strong> Mr. Joaquín Puccetti, representing <strong>PUCCETTI RONQUILLO S.L.</strong>, domiciled in Mairena del Aljarafe, Seville, Spain (hereinafter <strong>"PR"</strong>).</p>
+                <p><strong>On the other part,</strong> the signatory identified in the attached form (hereinafter the <strong>"Counterparty"</strong>).</p>
+                <h4>I. PURPOSE</h4>
+                <p>The Parties are exploring the possible acquisition, transfer or structuring of one or more real estate assets. In the context of such exploration, PR may provide confidential information to the signatory.</p>
+                <h4>II. CONFIDENTIAL INFORMATION</h4>
+                <p>Confidential Information means all information, data, analyses, valuations, strategies, financial projections, cadastral and registry data, investment structures and documents related to the asset(s) subject to the Transaction.</p>
+                <h4>III. OBLIGATIONS</h4>
+                <ul>
+                    <li>Keep the Confidential Information in strict confidence.</li>
+                    <li>Not disclose it to third parties without PR's prior written consent.</li>
+                    <li>Use it solely to evaluate the Transaction.</li>
+                    <li>Apply adequate security measures for its protection.</li>
+                    <li>Restrict access to employees or advisors who strictly require it.</li>
+                </ul>
+                <h4>IV. EXCLUSIONS</h4>
+                <p>Information shall not be considered confidential if it is or becomes publicly available, was already known to the Counterparty, or must be disclosed by law.</p>
+                <h4>V. TERM</h4>
+                <p>This Agreement shall remain in force for two (2) years from the date of electronic acceptance. Confidentiality obligations shall survive throughout the entire term.</p>
+                <h4>VI. NO OBLIGATION TO CONTRACT</h4>
+                <p>Signing this Agreement does not obligate either Party to contract or negotiate in relation to the Transaction.</p>
+                <h4>VII. GOVERNING LAW</h4>
+                <p>This Agreement is governed by Spanish law, in particular Law 1/2019 on Trade Secrets. The Parties submit to the jurisdiction of the Courts of Seville, Spain.</p>
+                <h4>VIII. ELECTRONIC SIGNATURE</h4>
+                <p>Acceptance via the attached form, with registration of identifying data, IP address, date and time, constitutes an electronic signature with full legal validity under Spanish Law 59/2003 on Electronic Signatures and EU Regulation 910/2014 (eIDAS).</p>
+            </div>
+
+            <p class="nda-scroll-notice" id="ndaScrollNotice">↑ Por favor, desplace el texto para leer el acuerdo completo antes de firmar.</p>
+
+            <!-- FORM -->
+            <div class="nda-form" id="ndaFormWrapper">
+                <form id="ndaForm" action="https://formspree.io/f/mojgbqnr" method="POST">
+                    <input type="hidden" name="_subject" value="NDA Firmado — Solicitud de Dossier">
+                    <input type="hidden" name="activo" id="ndaActivoField" value="">
+                    <input type="hidden" name="idioma_nda" id="ndaLangField" value="ES">
+                    <input type="hidden" name="timestamp" id="ndaTimestamp" value="">
+
+                    <div class="nda-form-grid">
+                        <div class="nda-field">
+                            <label id="lbl_nombre">Nombre completo *</label>
+                            <input type="text" name="nombre" required placeholder="Nombre Apellidos">
+                        </div>
+                        <div class="nda-field">
+                            <label id="lbl_empresa">Empresa / Razón Social</label>
+                            <input type="text" name="empresa" placeholder="Empresa o Family Office">
+                        </div>
+                        <div class="nda-field">
+                            <label id="lbl_email">Email *</label>
+                            <input type="email" name="email" required placeholder="email@empresa.com">
+                        </div>
+                        <div class="nda-field">
+                            <label id="lbl_telefono">Teléfono</label>
+                            <input type="tel" name="telefono" placeholder="+34 600 000 000">
+                        </div>
+                        <div class="nda-field">
+                            <label id="lbl_dni">DNI / CIF / Passport *</label>
+                            <input type="text" name="dni_cif" required placeholder="Número de identificación">
+                        </div>
+                        <div class="nda-field">
+                            <label id="lbl_pais">País de residencia *</label>
+                            <select name="pais" required>
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option>España</option>
+                                <option>Alemania</option>
+                                <option>Arabia Saudita</option>
+                                <option>Argentina</option>
+                                <option>Bélgica</option>
+                                <option>Brasil</option>
+                                <option>Colombia</option>
+                                <option>Emiratos Árabes Unidos</option>
+                                <option>Estados Unidos</option>
+                                <option>Francia</option>
+                                <option>Italia</option>
+                                <option>Kuwait</option>
+                                <option>Luxemburgo</option>
+                                <option>México</option>
+                                <option>Países Bajos</option>
+                                <option>Portugal</option>
+                                <option>Qatar</option>
+                                <option>Reino Unido</option>
+                                <option>Suiza</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="nda-field full">
+                            <label id="lbl_domicilio">Domicilio *</label>
+                            <input type="text" name="domicilio" required placeholder="Dirección completa">
+                        </div>
+                    </div>
+
+                    <div class="nda-accept-row">
+                        <input type="checkbox" id="ndaCheck" required>
+                        <label for="ndaCheck" id="lbl_check">
+                            He leído y acepto en su totalidad el <strong>Acuerdo de Confidencialidad</strong> de Puccetti Ronquillo Asset Management. Entiendo que esta aceptación electrónica tiene plena validez legal como firma digital conforme a la normativa vigente.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="nda-submit" id="ndaSubmitBtn">
+                        Firmar NDA y Solicitar Dossier
+                    </button>
+                </form>
+            </div>
+
+            <!-- SUCCESS -->
+            <div class="nda-success" id="ndaSuccess">
+                <div class="nda-success-icon">✓</div>
+                <h3 id="successTitle">NDA firmado correctamente</h3>
+                <p id="successMsg">Hemos registrado su firma y notificado al equipo de Puccetti Ronquillo. Nos pondremos en contacto en las próximas 24–48 horas para facilitar el dossier completo del activo.</p>
+            </div>
+
+        </div><!-- /nda-modal -->
+    </div><!-- /nda-overlay -->
 
     <!-- Contacto Section -->
     <section id="contacto" class="contacto">
