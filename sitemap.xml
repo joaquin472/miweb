@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- ============ HOME (ES) ============ -->
   <url>
     <loc>https://www.puccettironquillo.com/</loc>
     <lastmod>2026-09-14</lastmod>
@@ -11,7 +10,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.puccettironquillo.com/"/>
   </url>
 
-  <!-- ============ HOME (EN) ============ -->
   <url>
     <loc>https://www.puccettironquillo.com/index_en.html</loc>
     <lastmod>2026-09-14</lastmod>
@@ -20,38 +18,39 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.puccettironquillo.com/"/>
   </url>
 
-  <!-- ============ BLOG ============ -->
-  <!-- OJO: sustituye cada <lastmod> por la fecha real de publicación (AAAA-MM-DD).
-       Un lastmod falso hace que Google deje de fiarse del campo entero. -->
+  <url>
+    <loc>https://www.puccettironquillo.com/blog/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
 
   <url>
     <loc>https://www.puccettironquillo.com/blog/highest-and-best-use-inmobiliario.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-07</lastmod>
   </url>
 
   <url>
     <loc>https://www.puccettironquillo.com/blog/reposicionamiento-hotelero-espana.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-07</lastmod>
   </url>
 
   <url>
     <loc>https://www.puccettironquillo.com/blog/inversion-apartamentos-turisticos-sevilla.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-07</lastmod>
   </url>
 
   <url>
     <loc>https://www.puccettironquillo.com/blog/asset-management-inmobiliario-boutique.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-07</lastmod>
   </url>
 
   <url>
     <loc>https://www.puccettironquillo.com/blog/due-diligence-inmobiliaria-espana.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-07</lastmod>
   </url>
 
   <url>
     <loc>https://www.puccettironquillo.com/blog/reconversion-residencial-edificios-espana.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-07</lastmod>
   </url>
 
 </urlset>
