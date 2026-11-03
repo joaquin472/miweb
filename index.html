@@ -1417,6 +1417,32 @@
         }
         .asset-card:hover { border-color: var(--color-accent); }
 
+        .asset-photo {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: var(--color-border);
+            position: relative;
+        }
+        .asset-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(25%) brightness(.82);
+            transition: var(--transition);
+        }
+        .asset-card:hover .asset-photo img {
+            filter: grayscale(0%) brightness(.95);
+            transform: scale(1.03);
+        }
+        .asset-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10,10,10,.1), rgba(10,10,10,.75));
+            pointer-events: none;
+        }
+
         .asset-badge-row {
             display: flex;
             gap: .5rem;
@@ -1517,212 +1543,6 @@
         .asset-btn:hover {
             background: var(--color-accent);
             color: var(--color-bg);
-        }
-
-        /* ── NDA MODAL ───────────────────────────────────── */
-        .nda-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.92);
-            z-index: 9999;
-            overflow-y: auto;
-            padding: 2rem 1rem;
-        }
-        .nda-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
-
-        .nda-modal {
-            background: var(--color-bg-light);
-            border: 1px solid var(--color-border);
-            max-width: 760px;
-            width: 100%;
-            margin: auto;
-        }
-
-        .nda-modal-header {
-            padding: 2rem 2.5rem 1.5rem;
-            border-bottom: 1px solid var(--color-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        .nda-modal-title {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--color-text);
-        }
-        .nda-modal-sub {
-            font-size: .8rem;
-            color: var(--color-text-muted);
-            margin-top: .3rem;
-        }
-        .nda-close {
-            background: none;
-            border: none;
-            color: var(--color-text-muted);
-            font-size: 1.4rem;
-            cursor: pointer;
-            line-height: 1;
-            padding: 0;
-            flex-shrink: 0;
-        }
-        .nda-close:hover { color: var(--color-text); }
-
-        /* Lang tabs */
-        .nda-lang-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--color-border);
-        }
-        .nda-lang-tab {
-            padding: .8rem 2rem;
-            font-size: .75rem;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            cursor: pointer;
-            border: none;
-            background: none;
-            color: var(--color-text-muted);
-            font-family: var(--font-sans);
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            transition: var(--transition);
-        }
-        .nda-lang-tab.active {
-            color: var(--color-accent);
-            border-bottom-color: var(--color-accent);
-        }
-
-        /* NDA text box */
-        .nda-text-box {
-            margin: 0 2.5rem;
-            border: 1px solid var(--color-border);
-            height: 220px;
-            overflow-y: auto;
-            padding: 1.2rem 1.5rem;
-            font-size: .78rem;
-            color: var(--color-text-muted);
-            line-height: 1.7;
-            display: none;
-        }
-        .nda-text-box.active { display: block; }
-        .nda-text-box h4 {
-            font-family: var(--font-serif);
-            font-size: .9rem;
-            color: var(--color-text);
-            margin: 1rem 0 .4rem;
-        }
-        .nda-text-box h4:first-child { margin-top: 0; }
-        .nda-text-box p { margin-bottom: .6rem; }
-        .nda-text-box ul { padding-left: 1.2rem; margin-bottom: .6rem; }
-        .nda-text-box ul li { margin-bottom: .3rem; }
-
-        /* Form */
-        .nda-form { padding: 1.5rem 2.5rem 2rem; }
-        .nda-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin-bottom: 1.2rem;
-        }
-        .nda-field label {
-            display: block;
-            font-size: .68rem;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-            margin-bottom: .5rem;
-        }
-        .nda-field input, .nda-field select {
-            width: 100%;
-            padding: .7rem 0;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--color-border);
-            color: var(--color-text);
-            font-family: var(--font-sans);
-            font-size: .9rem;
-            outline: none;
-            transition: var(--transition);
-        }
-        .nda-field input:focus, .nda-field select:focus {
-            border-bottom-color: var(--color-accent);
-        }
-        .nda-field select option { background: #111; }
-        .nda-field.full { grid-column: 1 / -1; }
-
-        .nda-scroll-notice {
-            font-size: .72rem;
-            color: var(--color-text-muted);
-            margin: 0 2.5rem .8rem;
-            font-style: italic;
-        }
-
-        .nda-accept-row {
-            display: flex;
-            align-items: flex-start;
-            gap: .8rem;
-            margin-bottom: 1.2rem;
-        }
-        .nda-accept-row input[type="checkbox"] {
-            margin-top: 2px;
-            accent-color: var(--color-accent);
-            width: 15px;
-            height: 15px;
-            flex-shrink: 0;
-        }
-        .nda-accept-row label {
-            font-size: .8rem;
-            color: var(--color-text-muted);
-            line-height: 1.5;
-        }
-        .nda-accept-row label strong { color: var(--color-text); }
-
-        .nda-submit {
-            width: 100%;
-            padding: 1rem;
-            background: transparent;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            font-family: var(--font-sans);
-            font-size: .78rem;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .nda-submit:hover {
-            background: var(--color-accent);
-            color: var(--color-bg);
-        }
-        .nda-submit:disabled {
-            opacity: .4;
-            cursor: not-allowed;
-        }
-
-        .nda-success {
-            display: none;
-            padding: 2rem 2.5rem;
-            text-align: center;
-        }
-        .nda-success-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .nda-success h3 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            margin-bottom: .8rem;
-        }
-        .nda-success p { color: var(--color-text-muted); font-size: .9rem; line-height: 1.7; }
-
-        @media (max-width: 768px) {
-            .nda-form-grid { grid-template-columns: 1fr; }
-            .nda-modal-header, .nda-form, .nda-text-box,
-            .nda-scroll-notice { padding-left: 1.5rem; padding-right: 1.5rem; }
-            .nda-text-box { margin-left: 1.5rem; margin-right: 1.5rem; }
-            .nda-scroll-notice { margin-left: 1.5rem; margin-right: 1.5rem; }
         }
 
     </style>
@@ -2232,15 +2052,16 @@
             </div>
 
             <p class="activos-intro">
-                Los activos publicados se presentan en perfil ciego. La ubicación exacta, precio de compra,
-                documentación técnica y análisis financiero completo se facilitan exclusivamente a inversores
-                cualificados previa firma del Acuerdo de Confidencialidad (NDA).
+                Los activos publicados se presentan en perfil ciego. La ubicación exacta, el precio de compra,
+                la documentación técnica y el análisis financiero completo se facilitan exclusivamente a
+                inversores cualificados, previa cualificación de la solicitud.
             </p>
 
             <div class="asset-grid">
 
                 <!-- ── CAMPEZO 13 ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-madrid.jpg" alt="Madrid" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2285,64 +2106,16 @@
                         por el planeamiento vigente.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Edificio Polígono Empresarial · Distrito Este, Madrid')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Edificio Polígono Empresarial · Distrito Este, Madrid')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
-
-                <!-- ── LOLA DE TRIANA ── -->
-                <div class="asset-card">
-                    <div class="asset-badge-row">
-                        <span class="asset-badge">Disponible</span>
-                        <span class="asset-badge grey">Perfil Ciego</span>
-                        <span class="asset-badge grey">Sevilla</span>
-                    </div>
-                    <div class="asset-header">
-                        <div class="asset-type">Apartamentos Turísticos Premium · Operativo</div>
-                        <div class="asset-title">Conjunto de 15 Suites Turísticas</div>
-                        <div class="asset-location">Barrio de Triana · <span>Sevilla</span></div>
-                    </div>
-                    <div class="asset-divider"></div>
-                    <div class="asset-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">Unidades</div>
-                            <div class="spec-value">15 suites</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Superficie</div>
-                            <div class="spec-value">759 m²c</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Capacidad</div>
-                            <div class="spec-value">59 PAX</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Ticket</div>
-                            <div class="spec-value">Mid-ticket</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Modelo</div>
-                            <div class="spec-value">Operativo · Renta fija</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Estado</div>
-                            <div class="spec-value">En explotación</div>
-                        </div>
-                    </div>
-                    <div class="asset-thesis">
-                        <strong>Tesis:</strong> Activo operativo y rentable desde el día 1. Edificio completamente reformado en explotación turística activa en el barrio de mayor demanda internacional de Sevilla. Renta garantizada por operador profesional con escalado anual.
-                    </div>
-                    <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Conjunto de 15 Suites Turísticas · Triana, Sevilla')">
-                            Solicitar Acceso — Firmar NDA
-                        </button>
-                    </div>
-                </div>
 
                 <!-- ── SEDE BBVA SEVILLA ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-sevilla-1.jpg" alt="Sevilla" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2384,14 +2157,15 @@
                         <strong>Tesis:</strong> Activo core con inquilino de máxima solvencia (rating investment grade), contrato triple neto de largo plazo y renta indexada por encima de la inflación. Flujo de caja predecible sin exposición a gastos operativos.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Edificio de Oficinas Inquilino Único · Distrito Sur, Sevilla')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Edificio de Oficinas Inquilino Único · Distrito Sur, Sevilla')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── SEDE BBVA VALENCIA ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-valencia.jpg" alt="Valencia" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2433,14 +2207,15 @@
                         <strong>Tesis:</strong> Ubicación prime irreproducible en la plaza más emblemática de Valencia, completamente peatonal. Inquilino de máxima solvencia bajo triple neto: cero exposición a gastos operativos y flujo de caja totalmente predecible.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Sede Corporativa en Plaza Prime · Ciutat Vella, Valencia')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Sede Corporativa en Plaza Prime · Ciutat Vella, Valencia')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── BOTEROS 39 SEVILLA ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-sevilla-2.jpg" alt="Sevilla" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2474,14 +2249,15 @@
                         <strong>Tesis:</strong> Edificio en centro histórico de Sevilla con proyecto de rehabilitación integral a 7 apartamentos turísticos. Renta fija garantizada por operador profesional con escalado anual desde apertura.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Edificio 7 Apartamentos Turísticos · La Alfalfa, Sevilla')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Edificio 7 Apartamentos Turísticos · La Alfalfa, Sevilla')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── TRIANA 16 AT ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-sevilla-4.jpg" alt="Sevilla" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2523,14 +2299,15 @@
                         <strong>Tesis:</strong> Rehabilitación integral de edificio en Triana, barrio de mayor demanda turística de Sevilla. Renta fija garantizada desde apertura con operador AT profesional.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Edificio 10 Apartamentos Turísticos · Triana, Sevilla')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Edificio 10 Apartamentos Turísticos · Triana, Sevilla')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── CRISTO DE LA SED 25 — DOBLE USO ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-sevilla-3.jpg" alt="Sevilla" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2573,14 +2350,15 @@
                         <strong>Tesis:</strong> Edificio completo con doble estrategia viable: explotación como apartamentos turísticos con piscina en cubierta, o rehabilitación residencial para venta. El inversor elige el uso óptimo según su perfil de retorno.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Edificio con Piscina en Cubierta · Nervión, Sevilla')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Edificio con Piscina en Cubierta · Nervión, Sevilla')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── TORREMOLINOS 17 AT ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-costa-del-sol.jpg" alt="Torremolinos, Costa del Sol" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2622,14 +2400,15 @@
                         <strong>Tesis:</strong> Edificio singular de geometría curva a 5 minutos del Paseo Marítimo de Torremolinos. Proyecto técnico completado por 2RDIP Arquitectos. Piscina exterior como diferencial competitivo en mercado litoral de alta demanda.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Edificio 17 AT Paseo Marítimo · Torremolinos, Málaga')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Edificio 17 AT Paseo Marítimo · Torremolinos, Málaga')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── ISABEL II 16 SANTANDER ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-santander.jpg" alt="Santander" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2672,14 +2451,15 @@
                         <strong>Tesis:</strong> Edificio monumental de 1951 en arteria prime del casco histórico de Santander. Cuatro escenarios de reposicionamiento viables. Fachada catalogada con valor arquitectónico diferencial. PB+entresuelo comercial conservable como renta existente.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Edificio Monumental Casco Histórico · Arteria Prime, Santander')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Edificio Monumental Casco Histórico · Arteria Prime, Santander')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── JEREZ CASA-PATIO — DOBLE USO ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-jerez.jpg" alt="Jerez de la Frontera" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2722,14 +2502,15 @@
                         <strong>Tesis:</strong> Casa-patio andaluza catalogada con patio de columnas de mármol, piscina proyectada y cubierta transitable. Intervención arqueológica ya ejecutada con resultado favorable — riesgo de paralización eliminado. Precio de entrada muy por debajo del valor de reposición.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Casa-Patio Andaluza Centro Histórico · Jerez de la Frontera')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Casa-Patio Andaluza Centro Histórico · Jerez de la Frontera')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
 
                 <!-- ── RINCÓN DE LA VICTORIA SUELO ── -->
                 <div class="asset-card">
+                    <div class="asset-photo"><img src="/ciudad-costa-del-sol.jpg" alt="Costa del Sol" width="720" height="405" loading="lazy"></div>
                     <div class="asset-badge-row">
                         <span class="asset-badge">Disponible</span>
                         <span class="asset-badge grey">Perfil Ciego</span>
@@ -2771,57 +2552,8 @@
                         <strong>Tesis:</strong> Uno de los últimos bolsones de suelo residencial consolidado en primera línea de la Costa del Sol oriental, con vistas directas al Mediterráneo. Anteproyecto arquitectónico disponible. Segmento residencial premium en entorno de alta demanda internacional.
                     </div>
                     <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Suelo Residencial 42 Viviendas · Rincón de la Victoria, Málaga')">
-                            Solicitar Acceso — Firmar NDA
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── CENTRO COMERCIAL MARBELLA ── -->
-                <div class="asset-card">
-                    <div class="asset-badge-row">
-                        <span class="asset-badge">Disponible</span>
-                        <span class="asset-badge grey">Perfil Ciego</span>
-                        <span class="asset-badge grey">Costa del Sol</span>
-                    </div>
-                    <div class="asset-header">
-                        <div class="asset-type">Reconversión Hotelera · Arquitectura Singular</div>
-                        <div class="asset-title">Centro Comercial · Conversión Hotel 4★</div>
-                        <div class="asset-location">Cabopino · <span>Marbella</span></div>
-                    </div>
-                    <div class="asset-divider"></div>
-                    <div class="asset-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">Superficie total</div>
-                            <div class="spec-value">5.821 m²c</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Parcela</div>
-                            <div class="spec-value">3.976 m²</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Habitaciones est.</div>
-                            <div class="spec-value">100 hab. Hotel 4★</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Ticket</div>
-                            <div class="spec-value">Mid-ticket</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Uso hotelero</div>
-                            <div class="spec-value">Compatible PGOU</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Vistas</div>
-                            <div class="spec-value">Mar + Golf Cabopino</div>
-                        </div>
-                    </div>
-                    <div class="asset-thesis">
-                        <strong>Tesis:</strong> Edificio de arquitectura orientalista mudéjar única en la Costa del Sol, compatible con uso hotelero según PGOU Marbella. Vistas al Mediterráneo y al Golf de Cabopino. Spa/wellness en sótano como diferencial de categoría.
-                    </div>
-                    <div class="asset-cta">
-                        <button class="asset-btn" onclick="openNDA('Centro Comercial Conversión Hotel 4★ · Cabopino, Marbella')">
-                            Solicitar Acceso — Firmar NDA
+                        <button class="asset-btn" onclick="solicitarInfo('Suelo Residencial 42 Viviendas · Rincón de la Victoria, Málaga')">
+                            Solicitar Información
                         </button>
                     </div>
                 </div>
@@ -2829,177 +2561,6 @@
             </div><!-- /asset-grid -->
         </div>
     </section>
-
-    <!-- ══ NDA MODAL ════════════════════════════════════════════════════ -->
-    <div class="nda-overlay" id="ndaOverlay">
-        <div class="nda-modal" id="ndaModal">
-
-            <div class="nda-modal-header">
-                <div>
-                    <div class="nda-modal-title">Acuerdo de Confidencialidad · NDA</div>
-                    <div class="nda-modal-sub" id="ndaAssetName">Acceso a dossier de activo</div>
-                </div>
-                <button class="nda-close" onclick="closeNDA()">✕</button>
-            </div>
-
-            <!-- Lang tabs -->
-            <div class="nda-lang-tabs">
-                <button class="nda-lang-tab active" onclick="switchLang('es')">Español</button>
-                <button class="nda-lang-tab" onclick="switchLang('en')">English</button>
-            </div>
-
-            <!-- NDA TEXT ES -->
-            <div class="nda-text-box active" id="ndaTextEs">
-                <h4>ACUERDO DE CONFIDENCIALIDAD — Non-Disclosure Agreement (NDA)</h4>
-                <p>En Sevilla, en la fecha de firma electrónica registrada.</p>
-                <p><strong>De una parte,</strong> D. Joaquín Puccetti, en nombre y representación de <strong>PUCCETTI RONQUILLO S.L.</strong>, domiciliada en Mairena del Aljarafe, Sevilla (en adelante, <strong>"PR"</strong>).</p>
-                <p><strong>De otra parte,</strong> el firmante identificado en el formulario adjunto (en adelante, <strong>"La Contraparte"</strong>).</p>
-                <h4>I. OBJETO</h4>
-                <p>Las Partes están explorando la posible adquisición, transmisión o estructuración de uno o varios activos inmobiliarios. En el marco de dicha exploración, PR podrá facilitar información confidencial al firmante.</p>
-                <h4>II. INFORMACIÓN CONFIDENCIAL</h4>
-                <p>Se considera Información Confidencial toda información, datos, análisis, valoraciones, estrategias, proyecciones financieras, datos catastrales y registrales, estructuras de inversión y documentos relacionados con el activo o activos objeto de la Operación.</p>
-                <h4>III. OBLIGACIONES</h4>
-                <ul>
-                    <li>Mantener la Información Confidencial en estricto secreto.</li>
-                    <li>No divulgarla a terceros sin consentimiento previo y escrito de PR.</li>
-                    <li>Utilizarla exclusivamente para evaluar la Operación.</li>
-                    <li>Adoptar las medidas de seguridad necesarias para su protección.</li>
-                    <li>Limitar el acceso a empleados o asesores que la necesiten estrictamente.</li>
-                </ul>
-                <h4>IV. EXCLUSIONES</h4>
-                <p>No tendrá carácter confidencial la información que sea de dominio público, fuera ya conocida por la Contraparte, o deba divulgarse por imperativo legal.</p>
-                <h4>V. VIGENCIA</h4>
-                <p>El presente Acuerdo tendrá una duración de dos (2) años desde la fecha de aceptación electrónica. Las obligaciones de confidencialidad subsistirán durante toda la vigencia.</p>
-                <h4>VI. NO OBLIGACIÓN DE CONTRATAR</h4>
-                <p>La firma de este Acuerdo no obliga a ninguna de las Partes a contratar ni negociar en relación con la Operación.</p>
-                <h4>VII. LEY APLICABLE</h4>
-                <p>El presente Acuerdo se rige por la legislación española, en particular la Ley 1/2019 de Secretos Empresariales. Las Partes se someten a la jurisdicción de los Juzgados y Tribunales de Sevilla.</p>
-                <h4>VIII. FIRMA ELECTRÓNICA</h4>
-                <p>La aceptación mediante el formulario adjunto, con registro de datos identificativos, dirección IP, fecha y hora, constituye firma electrónica con plena validez legal conforme a la Ley 59/2003 de Firma Electrónica y el Reglamento (UE) 910/2014 (eIDAS).</p>
-            </div>
-
-            <!-- NDA TEXT EN -->
-            <div class="nda-text-box" id="ndaTextEn">
-                <h4>NON-DISCLOSURE AGREEMENT (NDA) — Acuerdo de Confidencialidad</h4>
-                <p>In Seville, on the date of the registered electronic acceptance.</p>
-                <p><strong>On one part,</strong> Mr. Joaquín Puccetti, representing <strong>PUCCETTI RONQUILLO S.L.</strong>, domiciled in Mairena del Aljarafe, Seville, Spain (hereinafter <strong>"PR"</strong>).</p>
-                <p><strong>On the other part,</strong> the signatory identified in the attached form (hereinafter the <strong>"Counterparty"</strong>).</p>
-                <h4>I. PURPOSE</h4>
-                <p>The Parties are exploring the possible acquisition, transfer or structuring of one or more real estate assets. In the context of such exploration, PR may provide confidential information to the signatory.</p>
-                <h4>II. CONFIDENTIAL INFORMATION</h4>
-                <p>Confidential Information means all information, data, analyses, valuations, strategies, financial projections, cadastral and registry data, investment structures and documents related to the asset(s) subject to the Transaction.</p>
-                <h4>III. OBLIGATIONS</h4>
-                <ul>
-                    <li>Keep the Confidential Information in strict confidence.</li>
-                    <li>Not disclose it to third parties without PR's prior written consent.</li>
-                    <li>Use it solely to evaluate the Transaction.</li>
-                    <li>Apply adequate security measures for its protection.</li>
-                    <li>Restrict access to employees or advisors who strictly require it.</li>
-                </ul>
-                <h4>IV. EXCLUSIONS</h4>
-                <p>Information shall not be considered confidential if it is or becomes publicly available, was already known to the Counterparty, or must be disclosed by law.</p>
-                <h4>V. TERM</h4>
-                <p>This Agreement shall remain in force for two (2) years from the date of electronic acceptance. Confidentiality obligations shall survive throughout the entire term.</p>
-                <h4>VI. NO OBLIGATION TO CONTRACT</h4>
-                <p>Signing this Agreement does not obligate either Party to contract or negotiate in relation to the Transaction.</p>
-                <h4>VII. GOVERNING LAW</h4>
-                <p>This Agreement is governed by Spanish law, in particular Law 1/2019 on Trade Secrets. The Parties submit to the jurisdiction of the Courts of Seville, Spain.</p>
-                <h4>VIII. ELECTRONIC SIGNATURE</h4>
-                <p>Acceptance via the attached form, with registration of identifying data, IP address, date and time, constitutes an electronic signature with full legal validity under Spanish Law 59/2003 on Electronic Signatures and EU Regulation 910/2014 (eIDAS).</p>
-            </div>
-
-            <p class="nda-scroll-notice" id="ndaScrollNotice">↑ Por favor, desplace el texto para leer el acuerdo completo antes de firmar.</p>
-
-            <!-- FORM -->
-            <div class="nda-form" id="ndaFormWrapper">
-                <form id="ndaForm" action="https://formspree.io/f/mojgbqnr" method="POST">
-                    <input type="hidden" name="_subject" value="NDA Firmado — Solicitud de Dossier">
-                    <input type="hidden" name="activo" id="ndaActivoField" value="">
-                    <input type="hidden" name="idioma_nda" id="ndaLangField" value="ES">
-                    <input type="hidden" name="timestamp" id="ndaTimestamp" value="">
-
-                    <div class="nda-form-grid">
-                        <div class="nda-field">
-                            <label id="lbl_nombre">Nombre completo *</label>
-                            <input type="text" name="nombre" required placeholder="Nombre Apellidos">
-                        </div>
-                        <div class="nda-field">
-                            <label id="lbl_empresa">Empresa / Razón Social</label>
-                            <input type="text" name="empresa" placeholder="Empresa o Family Office">
-                        </div>
-                        <div class="nda-field">
-                            <label id="lbl_email">Email *</label>
-                            <input type="email" name="email" required placeholder="email@empresa.com">
-                        </div>
-                        <div class="nda-field">
-                            <label id="lbl_telefono">Teléfono</label>
-                            <input type="tel" name="telefono" placeholder="+34 600 000 000">
-                        </div>
-                        <div class="nda-field">
-                            <label id="lbl_dni">DNI / CIF / Passport *</label>
-                            <input type="text" name="dni_cif" required placeholder="Número de identificación">
-                        </div>
-                        <div class="nda-field">
-                            <label id="lbl_pais">País de residencia *</label>
-                            <select name="pais" required>
-                                <option value="" disabled selected>Seleccionar</option>
-                                <option>España</option>
-                                <option>Alemania</option>
-                                <option>Arabia Saudita</option>
-                                <option>Argentina</option>
-                                <option>Bélgica</option>
-                                <option>Brasil</option>
-                                <option>Colombia</option>
-                                <option>Emiratos Árabes Unidos</option>
-                                <option>Estados Unidos</option>
-                                <option>Francia</option>
-                                <option>Italia</option>
-                                <option>Kuwait</option>
-                                <option>Luxemburgo</option>
-                                <option>México</option>
-                                <option>Países Bajos</option>
-                                <option>Portugal</option>
-                                <option>Qatar</option>
-                                <option>Reino Unido</option>
-                                <option>Suiza</option>
-                                <option>Otro</option>
-                            </select>
-                        </div>
-                        <div class="nda-field full">
-                            <label id="lbl_domicilio">Domicilio *</label>
-                            <input type="text" name="domicilio" required placeholder="Dirección completa">
-                        </div>
-                    </div>
-
-                    <div class="nda-accept-row">
-                        <input type="checkbox" id="ndaCheck" required>
-                        <label for="ndaCheck" id="lbl_check">
-                            He leído y acepto en su totalidad el <strong>Acuerdo de Confidencialidad</strong> de Puccetti Ronquillo Asset Management. Entiendo que esta aceptación electrónica tiene plena validez legal como firma digital conforme a la normativa vigente.
-                        </label>
-                    </div>
-
-                    <div class="nda-accept-row">
-                        <input type="checkbox" id="ndaPrivacy" required>
-                        <label for="ndaPrivacy" id="lbl_privacy">
-                            Consiento el tratamiento de mis datos personales, incluidos mis datos identificativos, por parte de <strong>Puccetti Ronquillo, S.L.</strong> con la finalidad de formalizar el Acuerdo de Confidencialidad y facilitarme la documentación del activo solicitado. He leído la <a href="/politica-privacidad.html" target="_blank" style="color:var(--color-accent);">Política de Privacidad</a>.
-                        </label>
-                    </div>
-
-                    <button type="submit" class="nda-submit" id="ndaSubmitBtn">
-                        Firmar NDA y Solicitar Dossier
-                    </button>
-                </form>
-            </div>
-
-            <!-- SUCCESS -->
-            <div class="nda-success" id="ndaSuccess">
-                <div class="nda-success-icon">✓</div>
-                <h3 id="successTitle">NDA firmado correctamente</h3>
-                <p id="successMsg">Hemos registrado su firma y notificado al equipo de Puccetti Ronquillo. Nos pondremos en contacto en las próximas 24–48 horas para facilitar el dossier completo del activo.</p>
-            </div>
-
-        </div><!-- /nda-modal -->
-    </div><!-- /nda-overlay -->
 
     <!-- Contacto Section -->
     <section id="contacto" class="contacto">
@@ -3184,87 +2745,17 @@
     </script>
 
     <script>
-        // ── NDA Modal ──────────────────────────────────────────────────────
-        var currentLang = 'es';
-
-        function openNDA(assetName) {
-            document.getElementById('ndaAssetName').textContent = assetName;
-            document.getElementById('ndaActivoField').value = assetName;
-            document.getElementById('ndaTimestamp').value = new Date().toISOString();
-            document.getElementById('ndaOverlay').classList.add('open');
-            document.body.style.overflow = 'hidden';
+        // ── Solicitud de información sobre un activo ──────────────────────
+        function solicitarInfo(activo) {
+            var asunto = document.getElementById('asunto');
+            if (asunto) asunto.value = 'Solicitud de información — ' + activo;
+            var destino = document.getElementById('contacto');
+            if (destino) destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(function () {
+                var nombre = document.getElementById('nombre');
+                if (nombre) nombre.focus({ preventScroll: true });
+            }, 700);
         }
-
-        function closeNDA() {
-            document.getElementById('ndaOverlay').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        function switchLang(lang) {
-            currentLang = lang;
-            document.getElementById('ndaLangField').value = lang.toUpperCase();
-            document.querySelectorAll('.nda-lang-tab').forEach(function(t) {
-                t.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            document.getElementById('ndaTextEs').classList.toggle('active', lang === 'es');
-            document.getElementById('ndaTextEn').classList.toggle('active', lang === 'en');
-            var isEN = lang === 'en';
-            document.getElementById('lbl_nombre').textContent    = isEN ? 'Full name *'           : 'Nombre completo *';
-            document.getElementById('lbl_empresa').textContent   = isEN ? 'Company / Entity'       : 'Empresa / Razón Social';
-            document.getElementById('lbl_email').textContent     = isEN ? 'Email *'                : 'Email *';
-            document.getElementById('lbl_telefono').textContent  = isEN ? 'Phone'                  : 'Teléfono';
-            document.getElementById('lbl_dni').textContent       = isEN ? 'ID / CIF / Passport *'  : 'DNI / CIF / Passport *';
-            document.getElementById('lbl_pais').textContent      = isEN ? 'Country of residence *' : 'País de residencia *';
-            document.getElementById('lbl_domicilio').textContent = isEN ? 'Full address *'          : 'Domicilio *';
-            document.getElementById('lbl_check').innerHTML = isEN
-                ? 'I have read and fully accept the <strong>Non-Disclosure Agreement</strong> of Puccetti Ronquillo Asset Management. I understand that this electronic acceptance has full legal validity as a digital signature under applicable law.'
-                : 'He leído y acepto en su totalidad el <strong>Acuerdo de Confidencialidad</strong> de Puccetti Ronquillo Asset Management. Entiendo que esta aceptación electrónica tiene plena validez legal como firma digital conforme a la normativa vigente.';
-            document.getElementById('lbl_privacy').innerHTML = isEN
-                ? 'I consent to the processing of my personal data, including my identification details, by <strong>Puccetti Ronquillo, S.L.</strong> for the purpose of formalising the Non-Disclosure Agreement and providing me with the requested asset documentation. I have read the <a href="/politica-privacidad.html" target="_blank" style="color:var(--color-accent);">Privacy Policy</a>.'
-                : 'Consiento el tratamiento de mis datos personales, incluidos mis datos identificativos, por parte de <strong>Puccetti Ronquillo, S.L.</strong> con la finalidad de formalizar el Acuerdo de Confidencialidad y facilitarme la documentación del activo solicitado. He leído la <a href="/politica-privacidad.html" target="_blank" style="color:var(--color-accent);">Política de Privacidad</a>.';
-            document.getElementById('ndaScrollNotice').textContent = isEN
-                ? '↑ Please scroll through the agreement and read it in full before signing.'
-                : '↑ Por favor, desplace el texto para leer el acuerdo completo antes de firmar.';
-            document.getElementById('ndaSubmitBtn').textContent = isEN
-                ? 'Sign NDA & Request Dossier'
-                : 'Firmar NDA y Solicitar Dossier';
-            document.getElementById('successTitle').textContent = isEN
-                ? 'NDA signed successfully'
-                : 'NDA firmado correctamente';
-            document.getElementById('successMsg').textContent = isEN
-                ? 'We have registered your signature and notified the Puccetti Ronquillo team. We will contact you within 24–48 hours to provide the full asset dossier.'
-                : 'Hemos registrado su firma y notificado al equipo de Puccetti Ronquillo. Nos pondremos en contacto en las próximas 24–48 horas para facilitar el dossier completo del activo.';
-        }
-
-        document.getElementById('ndaOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeNDA();
-        });
-
-        document.getElementById('ndaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var btn = document.getElementById('ndaSubmitBtn');
-            btn.disabled = true;
-            btn.textContent = currentLang === 'en' ? 'Sending...' : 'Enviando...';
-            var formData = new FormData(this);
-            fetch('https://formspree.io/f/mojgbqnr', {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            }).then(function(r) {
-                if (r.ok) {
-                    document.getElementById('ndaFormWrapper').style.display = 'none';
-                    document.getElementById('ndaSuccess').style.display = 'block';
-                } else {
-                    btn.disabled = false;
-                    btn.textContent = currentLang === 'en' ? 'Sign NDA & Request Dossier' : 'Firmar NDA y Solicitar Dossier';
-                    alert(currentLang === 'en' ? 'Error. Please try again.' : 'Error al enviar. Intente de nuevo.');
-                }
-            }).catch(function() {
-                btn.disabled = false;
-                alert(currentLang === 'en' ? 'Connection error. Please try again.' : 'Error de conexión. Intente de nuevo.');
-            });
-        });
     </script>
 
 </body>
