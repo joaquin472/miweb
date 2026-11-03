@@ -1547,6 +1547,60 @@
             color: var(--color-bg);
         }
 
+
+        /* ── Vídeo de portada ─────────────────────────────── */
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            background: var(--color-bg) url('/hero-poster.jpg') center/cover no-repeat;
+        }
+        .hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to bottom, rgba(10,10,10,.72), rgba(10,10,10,.88)),
+                radial-gradient(circle at center, rgba(10,10,10,.45) 0%, rgba(10,10,10,.92) 75%);
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero .scroll-indicator { z-index: 2; }
+
+        @media (max-width: 768px) {
+            .hero-media video { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-media video { display: none; }
+        }
+
+        /* ── Fondo fotográfico de las tarjetas de mercado ──── */
+        .mercado-card {
+            background-size: cover;
+            background-position: center;
+            isolation: isolate;
+        }
+        .mercado-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(to bottom, rgba(10,10,10,.78), rgba(10,10,10,.93));
+            transition: var(--transition);
+        }
+        .mercado-card:hover::after {
+            background: linear-gradient(to bottom, rgba(10,10,10,.62), rgba(10,10,10,.88));
+        }
+        .mercado-card.featured::after {
+            background: linear-gradient(to bottom, rgba(10,10,10,.70), rgba(10,10,10,.90));
+        }
+
     </style>
 </head>
 <body>
@@ -1575,6 +1629,11 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-media">
+            <video autoplay muted loop playsinline preload="metadata" poster="/hero-poster.jpg" aria-hidden="true">
+                <source src="/hero-querencia.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-content">
             <p class="hero-subtitle">Real Estate Asset Management</p>
             <h1>Real Estate Asset Management and Repositioning in Spain</h1>
@@ -1904,7 +1963,7 @@
 
             <div class="mercados-grid">
 
-                <div class="mercado-card featured">
+                <div class="mercado-card featured" style="background-image:url('/ciudad-sevilla-1.jpg')">
                     <div class="mercado-tag">Primary Market</div>
                     <div class="mercado-name">Sevilla</div>
                     <p class="mercado-desc">Headquarters and deepest market for Puccetti Ronquillo. High concentration of tourist and historic assets with hotel conversion potential in the historic centre.</p>
@@ -1916,7 +1975,7 @@
                     </div>
                 </div>
 
-                <div class="mercado-card featured">
+                <div class="mercado-card featured" style="background-image:url('/ciudad-costa-del-sol.jpg')">
                     <div class="mercado-tag">Primary Market</div>
                     <div class="mercado-name">Costa del Sol</div>
                     <p class="mercado-desc">Marbella, Estepona, Málaga and western corridor. Reference market for luxury hotel and tourist investment with sustained international demand and competitive yields.</p>
@@ -1928,7 +1987,7 @@
                     </div>
                 </div>
 
-                <div class="mercado-card">
+                <div class="mercado-card" style="background-image:url('/ciudad-madrid.jpg')">
                     <div class="mercado-tag">Active Market</div>
                     <div class="mercado-name">Madrid</div>
                     <p class="mercado-desc">Reference capital for institutional investors and family offices. Value-add operations in tertiary assets and multifamily residential in high-liquidity districts.</p>
@@ -1950,7 +2009,7 @@
                     </div>
                 </div>
 
-                <div class="mercado-card">
+                <div class="mercado-card" style="background-image:url('/ciudad-valencia.jpg')">
                     <div class="mercado-tag">Active Market</div>
                     <div class="mercado-name">Valencia</div>
                     <p class="mercado-desc">Expanding market with growing institutional interest. Opportunities in hotel and residential conversion around the historic centre and coastal area.</p>
@@ -1961,7 +2020,7 @@
                     </div>
                 </div>
 
-                <div class="mercado-card">
+                <div class="mercado-card" style="background-image:url('/ciudad-sevilla-4.jpg')">
                     <div class="mercado-tag">Active Market</div>
                     <div class="mercado-name">Cádiz</div>
                     <p class="mercado-desc">Highly distinctive historic assets with boutique hotel conversion potential. Market with limited institutional competition and attractive yields in the mid-ticket segment.</p>
@@ -1972,7 +2031,7 @@
                     </div>
                 </div>
 
-                <div class="mercado-card">
+                <div class="mercado-card" style="background-image:url('/ciudad-jerez.jpg')">
                     <div class="mercado-tag">Active Market</div>
                     <div class="mercado-name">Jerez de la Frontera</div>
                     <p class="mercado-desc">Underpenetrated market with unique assets linked to wine heritage. High repositioning potential in experiential tourism and design hospitality.</p>
@@ -1983,7 +2042,7 @@
                     </div>
                 </div>
 
-                <div class="mercado-card">
+                <div class="mercado-card" style="background-image:url('/ciudad-sevilla-3.jpg')">
                     <div class="mercado-tag">Active Market</div>
                     <div class="mercado-name">Córdoba</div>
                     <p class="mercado-desc">UNESCO World Heritage historic centre with growing tourist demand. Residential and historic assets with conversion potential into high-value hotel establishments.</p>
@@ -1994,7 +2053,7 @@
                     </div>
                 </div>
 
-                <div class="mercado-card">
+                <div class="mercado-card" style="background-image:url('/ciudad-santander.jpg')">
                     <div class="mercado-tag">Active Market</div>
                     <div class="mercado-name">Santander</div>
                     <p class="mercado-desc">Coastal market with hotel and residential assets undergoing renewal. Seasonal tourist demand with growing institutional capital interest in the holiday segment.</p>
